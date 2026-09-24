@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TOUCH WOOD™ | Yelahanka | 8000+ Styles</title>
+    <style>
+        :root {
+            --bg: #0b0c10;
+            --card-bg: #14171d;
+            --surface: #1e222b;
+            --accent-neon: #00ff87;
+            --accent-violet: #7928ca;
+            --accent-pink: #ff007f;
+            --text: #f5f6f8;
+            --text-muted: #8b949e;
+            --border: #2a2f3a;
+            --star: #ffb800;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER & TICKER --- */
+        .promo-ticker {
+            background: linear-gradient(90deg, var(--accent-violet), var(--accent-pink));
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 6px 0;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        header {
+            background: rgba(11, 12, 16, 0.9);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            padding: 14px 4%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand h1 {
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: var(--accent-neon);
+        }
+
+        .brand-sub {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-pill {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 8px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+
+        .nav-pill:hover,
+        .nav-pill.active {
+            background: var(--accent-neon);
+            color: #000;
+        }
+
+        .cart-indicator {
+            background: var(--accent-pink);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* --- CAMPAIGN BANNERS --- */
+        .section-headline {
+            padding: 24px 4% 10px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-headline span {
+            color: var(--accent-neon);
+        }
+
+        .banner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            padding: 0 4%;
+        }
+
+        .banner-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 280px;
+            border: 1px solid var(--border);
+        }
+
+        .banner-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6);
+            transition: transform 0.4s ease;
+        }
+
+        .banner-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .banner-overlay {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            right: 16px;
+            z-index: 2;
+        }
+
+        .banner-tag {
+            background: var(--accent-neon);
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+
+        .banner-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        /* --- VIRAL BANNER --- */
+        .viral-banner {
+            background: linear-gradient(135deg, rgba(121, 40, 202, 0.15), rgba(255, 0, 127, 0.15));
+            border: 1px dashed var(--accent-pink);
+            margin: 30px 4%;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .viral-banner:hover {
+            background: rgba(255, 0, 127, 0.2);
+        }
+
+        .upload-action-btn {
+            background: var(--accent-neon);
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-weight: 800;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* --- PRODUCT GRID --- */
+        .catalog-meta {
+            padding: 10px 4%;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .product-feed {
+            padding: 10px 4% 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease;
+        }
+
+        .product-card:hover {
+            border-color: var(--accent-neon);
+            transform: translateY(-4px);
+        }
+
+        .card-media {
+            position: relative;
+            height: 320px;
+            background: #111;
+        }
+
+        .card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .designer-pill {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .card-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .product-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 8px 0;
+        }
+
+        .specs-table {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            background: var(--surface);
+            padding: 8px;
+            border-radius: 6px;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .current-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--accent-neon);
+        }
+
+        .retail-price {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+        }
+
+        .buy-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .btn-cart {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: #fff;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .btn-buy {
+            background: var(--accent-neon);
+            border: none;
+            color: #000;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        /* --- MODALS & VIDEO GALLERY --- */
+        .modal-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+            padding: 20px;
+        }
+
+        .modal-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 800px;
+            padding: 24px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .video-card {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 250px;
+            background: #000;
+            border: 1px solid var(--border);
+            cursor: pointer;
+        }
+
+        .video-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: white;
+            background: rgba(255, 0, 127, 0.8);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .video-views {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="promo-ticker">
+        ⚡ TOUCH WOOD™ BENGALURU • 8,000+ LIVE PRODUCTS • FREE COD PAN-INDIA ⚡
+    </div>
+
+    <header>
+        <div class="brand">
+            <h1>TOUCH WOOD</h1>
+            <span class="brand-sub">YELAHANKA HQ</span>
+        </div>
+        <nav>
+            <button class="nav-pill active" onclick="filterCatalog('all')">All 8000+</button>
+            <button class="nav-pill" onclick="filterCatalog('men')">Men</button>
+            <button class="nav-pill" onclick="filterCatalog('women')">Women</button>
+            <button class="nav-pill" onclick="filterCatalog('kids')">Kids & Toys</button>
+            <button class="nav-pill" onclick="filterCatalog('actors')">Actor Editions</button>
+        </nav>
+        <button class="cart-indicator" onclick="openModal('cartModal')">🛒 Bag (<span
+                id="cart-counter">0</span>)</button>
+    </header>
+
+    <!-- CELEBRITY CAMPAIGN HIGHLIGHTS (EXPANDED) -->
+    <h2 class="section-headline">The <span>Icons</span> Editions</h2>
+    <div class="banner-grid">
+        <div class="banner-card" onclick="filterCatalog('actors')">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&q=80" alt="Yash" />
+            <div class="banner-overlay">
+                <span class="banner-tag">Yash Edit</span>
+                <div class="banner-title">Rocky Raw Denim</div>
+            </div>
+        </div>
+        <div class="banner-card" onclick="filterCatalog('actors')">
+            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500&q=80" alt="Mamitha Baiju" />
+            <div class="banner-overlay">
+                <span class="banner-tag">Mamitha's Premalu Vibe</span>
+                <div class="banner-title">Gen-Z Malayalam Core</div>
+            </div>
+        </div>
+        <div class="banner-card" onclick="filterCatalog('actors')">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&q=80" alt="Kalyani" />
+            <div class="banner-overlay">
+                <span class="banner-tag">Kalyani Priyadarshan</span>
+                <div class="banner-title">Elegant Festive Drapes</div>
+            </div>
+        </div>
+        <div class="banner-card" onclick="filterCatalog('actors')">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&q=80" alt="Suriya" />
+            <div class="banner-overlay">
+                <span class="banner-tag">Suriya's Singam</span>
+                <div class="banner-title">South Action Khakis</div>
+            </div>
+        </div>
+        <div class="banner-card" onclick="filterCatalog('actors')">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&q=80" alt="Kayadu Lohar" />
+            <div class="banner-overlay">
+                <span class="banner-tag">Kayadu Lohar</span>
+                <div class="banner-title">Rustic Heritage Chic</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIRAL 20% DISCOUNT MECHANISM -->
+    <section class="viral-banner" onclick="openModal('viewsClubModal')">
+        <div>
+            <h3 style="color: var(--accent-pink); font-size: 1.3rem;">🎬 Enter the 2k Views Club (Get 20% Off)</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 5px;">Upload your Touch Wood fit, hit
+                2,000 views, and get cashback. <b>Click here to view previous winners!</b></p>
+        </div>
+        <button class="upload-action-btn">View Gallery & Upload</button>
+    </section>
+
+    <!-- DYNAMIC PRODUCT FEED -->
+    <div class="catalog-meta">Showing <span id="catalogCount">8000</span> Products Available Now</div>
+    <main class="product-feed" id="productGrid"></main>
+
+    <!-- 2K VIEWS CLUB MODAL (VIDEO GALLERY) -->
+    <div class="modal-backdrop" id="viewsClubModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>🔥 The 2K Views Winners Circle</h2>
+                <button class="modal-close" onclick="closeModal('viewsClubModal')">&times;</button>
+            </div>
+            <p style="color: var(--text-muted); margin-bottom: 15px;">Watch how our top customers styled their Touch
+                Wood outfits. Submit your link below to join them.</p>
+
+            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <input type="url" placeholder="Paste your Instagram Reel / Shorts Link"
+                    style="flex: 1; padding: 10px; border-radius: 4px; border: 1px solid var(--border); background: var(--surface); color: white;">
+                <button class="btn-buy"
+                    onclick="alert('Video submitted for Yelahanka team verification!')">Submit</button>
+            </div>
+
+            <div class="video-grid" id="videoGalleryGrid">
+                <!-- Videos injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- CART & CHECKOUT PLACEHOLDERS -->
+    <div class="modal-backdrop" id="cartModal">
+        <div class="modal-box" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2>Your Bag</h2>
+                <button class="modal-close" onclick="closeModal('cartModal')">&times;</button>
+            </div>
+            <div id="cartItemsContainer" style="margin-bottom: 20px;"></div>
+            <button class="btn-buy" style="width: 100%;"
+                onclick="alert('Proceeding to Yelahanka Dispatch Checkout...')">Checkout via COD/UPI</button>
+        </div>
+    </div>
+
+    <script>
+        /* --- THE 8000 PRODUCT ENGINE --- */
+
+        // 1. Core Hand-Crafted Items (Specific Requests)
+        const baseCatalog = [
+            // ACTORS
+            { id: 1, name: "Yash Exclusive Raw Denim Jacket", category: "actors", designer: "Rocky Edit", price: 2199, retail: 4500, specs: "Heavyweight 14oz Denim • Vintage Brass Buttons • Rugged Finish", image: "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=500&q=80" },
+            { id: 2, name: "Mamitha's Gen-Z Oversized Graphic Tee", category: "actors", designer: "Premalu Vibe", price: 699, retail: 1299, specs: "240 GSM Premium Cotton • Puff Print Typography • Dropped Shoulders", image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=500&q=80" },
+            { id: 3, name: "Kalyani Elegant Silk Kurta Set", category: "actors", designer: "Festive Drapes", price: 3499, retail: 6000, specs: "Pure Chanderi Silk • Hand Zardozi Embroidery • Scalloped Dupatta", image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=500&q=80" },
+            { id: 4, name: "Suriya Action Utility Khakis", category: "actors", designer: "Singam Edition", price: 1299, retail: 2499, specs: "Twill Cotton Blend • 6 Tactical Pockets • Reinforced Stitching", image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500&q=80" },
+            { id: 5, name: "Kayadu Lohar Rustic Oxidized Jewelry & Dress", category: "actors", designer: "Heritage Chic", price: 2899, retail: 5500, specs: "Block Printed Cotton Maxi • Includes Oxidized Silver Choker", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&q=80" },
+
+            // KIDS (Highly Detailed Specs)
+            { id: 6, name: "Infant Hypoallergenic Bamboo Romper", category: "kids", designer: "Touch Wood Baby", price: 499, retail: 999, specs: "Age: 0-12 Months • 100% Organic Bamboo Cotton • No-Choke Snap Buttons • Rash-Free Dyes", image: "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=500&q=80" },
+            { id: 7, name: "Toddler Boy Festive Kurta Pajama", category: "kids", designer: "Mini Ethnic", price: 899, retail: 1599, specs: "Age: 2-5 Yrs • Breathable Cotton Silk • Elastic Waistband • Non-Itchy Lining", image: "https://images.unsplash.com/photo-1605369651566-f4803b9b46e3?w=500&q=80" },
+            { id: 8, name: "Girls Sequin Princess Party Dress", category: "kids", designer: "Fairy Tales", price: 1299, retail: 2500, specs: "Age: 4-8 Yrs • Soft Tulle Netting • Cotton Inner Lining • Tear-Resistant Seams", image: "https://images.unsplash.com/photo-1519238396247-458fc19fbfa6?w=500&q=80" },
+            { id: 9, name: "Kids Interactive Learning Toy Set", category: "kids", designer: "Touch Wood Play", price: 599, retail: 1199, specs: "Age: 3+ • BPA-Free Wooden Blocks • Non-Toxic Paint • Promotes Motor Skills", image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=500&q=80" },
+
+            // WOMEN (Accessories & Clothes)
+            { id: 10, name: "Matte Liquid Lipstick & Tote Combo", category: "women", designer: "Glam Hub", price: 899, retail: 2000, specs: "12-Hr Stay Vegan Lipstick (Crimson) • PU Leather Waterproof Tote", image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500&q=80" },
+
+            // MEN
+            { id: 11, name: "Classic Bengal Cotton White Shirt", category: "men", designer: "Touch Wood Basics", price: 599, retail: 1200, specs: "100% Breathable Cotton • Wrinkle-Resistant Finish • Slim Fit", image: "https://images.unsplash.com/photo-1596755094514-f87e32f6b717?w=500&q=80" }
+        ];
+
+        // 2. The 8000 Mass Generator (Simulating a massive Database)
+        let fullCatalog = [...baseCatalog];
+
+        const categories = ['men', 'women', 'kids'];
+        const menImages = ["https://images.unsplash.com/photo-1516826957135-700ede19c6ce?w=500&q=80", "https://images.unsplash.com/photo-1617137968427-85924c800a22?w=500&q=80"];
+        const womenImages = ["https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&q=80", "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?w=500&q=80"];
+        const kidsImages = ["https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?w=500&q=80", "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=500&q=80"];
+
+        const adjectives = ["Premium", "Essential", "Vintage", "Neon", "Urban", "Classic", "Cyberpunk", "Minimalist"];
+        const nouns = ["Tee", "Jacket", "Trousers", "Hoodie", "Dress", "Kurta", "Sneakers", "Bag"];
+
+        // Loop to create the remaining 7,989 products instantly
+        for (let i = baseCatalog.length + 1; i <= 8000; i++) {
+            const cat = categories[Math.floor(Math.random() * categories.length)];
+            let imgArray = cat === 'men' ? menImages : cat === 'women' ? womenImages : kidsImages;
+            let price = Math.floor(Math.random() * 2000) + 299;
+
+            fullCatalog.push({
+                id: i,
+                name: `${adjectives[Math.floor(Math.random() * adjectives.length)]} ${nouns[Math.floor(Math.random() * nouns.length)]}`,
+                category: cat,
+                designer: "Touch Wood Studio",
+                price: price,
+                retail: price + 1000,
+                specs: "Standard Fit • Machine Washable • Yelahanka QC Passed",
+                image: imgArray[Math.floor(Math.random() * imgArray.length)]
+            });
+        }
+
+        // 3. Render Logic (Only renders first 50 to prevent browser crash, but counts all 8000)
+        function renderCatalog(items) {
+            const grid = document.getElementById("productGrid");
+            grid.innerHTML = "";
+
+            // Limit DOM injection to 50 for performance, just like actual pagination
+            const itemsToRender = items.slice(0, 50);
+            document.getElementById('catalogCount').innerText = items.length;
+
+            itemsToRender.forEach(prod => {
+                grid.innerHTML += `
+          <article class="product-card">
+            <div class="card-media">
+              <span class="designer-pill">${prod.designer}</span>
+              <img src="${prod.image}" loading="lazy" />
+            </div>
+            <div class="card-body">
+              <div>
+                <h3 class="product-name">${prod.name}</h3>
+                <div class="specs-table">${prod.specs}</div>
+              </div>
+              <div>
+                <div class="price-row">
+                  <span class="current-price">₹${prod.price}</span>
+                  <span class="retail-price">₹${prod.retail}</span>
+                </div>
+                <div class="buy-actions">
+                  <button class="btn-cart" onclick="addToCart(${prod.id}, '${prod.name}', ${prod.price})">Add to Bag</button>
+                  <button class="btn-buy" onclick="alert('Proceeding to Buy ${prod.name}')">Buy Now</button>
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+            });
+        }
+
+        function filterCatalog(category) {
+            document.querySelectorAll('.nav-pill').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (category === 'all') renderCatalog(fullCatalog);
+            else renderCatalog(fullCatalog.filter(item => item.category === category));
+        }
+
+        // 4. Cart Logic
+        let cart = [];
+        function addToCart(id, name, price) {
+            cart.push({ id, name, price });
+            document.getElementById('cart-counter').innerText = cart.length;
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cartItemsContainer');
+            container.innerHTML = cart.map((item, i) => `
+        <div style="display:flex; justify-content:space-between; margin-bottom:10px; border-bottom:1px solid #333; padding-bottom:5px;">
+          <span>${item.name}</span>
+          <span>₹${item.price} <button style="color:red; background:none; border:none;" onclick="removeFromCart(${i})">X</button></span>
+        </div>
+      `).join('');
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            document.getElementById('cart-counter').innerText = cart.length;
+            updateCartUI();
+        }
+
+        // 5. 2k Views Video Gallery Generator
+        function generateVideos() {
+            const grid = document.getElementById('videoGalleryGrid');
+            grid.innerHTML = "";
+            const videoImages = [
+                "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&q=80",
+                "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&q=80",
+                "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&q=80",
+                "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=400&q=80",
+                "https://images.unsplash.com/photo-1550614000-4b95d4669e11?w=400&q=80"
+            ];
+
+            for (let i = 0; i < 15; i++) {
+                let views = (Math.random() * 5 + 2).toFixed(1) + "k"; // Between 2.0k and 7.0k
+                grid.innerHTML += `
+          <div class="video-card">
+            <img src="${videoImages[i % videoImages.length]}" />
+            <div class="play-btn">▶</div>
+            <div class="video-views">👁 ${views} Views</div>
+          </div>
+        `;
+            }
+        }
+
+        // Modal Controls
+        function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
+            if (id === 'viewsClubModal') generateVideos();
+        }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+        // Init
+        renderCatalog(fullCatalog);
+    </script>
+</body>
+
+</html>
