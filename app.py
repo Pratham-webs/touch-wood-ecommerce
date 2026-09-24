@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-import random
+import os
 
 app = Flask(__name__)
 CORS(app) # This allows your frontend (HTML) to communicate with this backend
@@ -54,5 +54,5 @@ def process_checkout():
     })
 
 if __name__ == '__main__':
-    print("Starting Touch Wood Backend Server on port 5000...")
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get("PORT",5000))
+    app.run(host='0.0.0.0',port=port)
